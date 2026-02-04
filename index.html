@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Valentine 💖</title>
+
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       display: flex;
       justify-content: center;
@@ -18,6 +19,7 @@
     .container {
       text-align: center;
       color: white;
+      padding: 20px;
     }
 
     h1 {
@@ -56,9 +58,16 @@
       margin-top: 20px;
     }
 
-    .photos {
-      margin-top: 80px;
+    #giftBtn {
       display: none;
+      background: #ffb703;
+      color: #fff;
+      margin-top: 25px;
+    }
+
+    .photos {
+      display: none;
+      margin-top: 40px;
     }
 
     .photos img {
@@ -71,39 +80,46 @@
 
 <body>
   <div class="container">
+
     <h1>Hey Bavneet 💖<br>Will you be my Valentine?</h1>
 
     <button id="yes">Yes 😍</button>
     <button id="no">No 🙈</button>
 
+    <!-- Love Section -->
     <div id="love">
       <h2>Best decision ever ❤️<br>I love you 😘</h2>
 
-      <!-- Meme / cute video -->
-      <video autoplay loop muted>
+      <video id="loveVideo" loop muted playsinline>
         <source src="meme.mp4" type="video/mp4">
       </video>
+
+      <br>
+      <button id="giftBtn">Nice Gift 🎁</button>
     </div>
 
-    <!-- Photos section -->
+    <!-- Photos -->
     <div class="photos" id="photos">
       <h2>Our Memories 💕</h2>
       <img src="photo1.jpg">
       <img src="photo2.jpg">
       <img src="photo3.jpg">
     </div>
+
   </div>
 
   <script>
     const noBtn = document.getElementById("no");
     const yesBtn = document.getElementById("yes");
     const love = document.getElementById("love");
+    const video = document.getElementById("loveVideo");
+    const giftBtn = document.getElementById("giftBtn");
     const photos = document.getElementById("photos");
 
     // NO button bhagta rahe
     noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 100);
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 120);
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
     });
@@ -113,9 +129,24 @@
       yesBtn.style.display = "none";
       noBtn.style.display = "none";
       love.style.display = "block";
+      giftBtn.style.display = "inline-block";
+
+      // force video play (important for browser)
+      video.currentTime = 0;
+      video.play();
+
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    });
+
+    // Gift button click → show photos
+    giftBtn.addEventListener("click", () => {
       photos.style.display = "block";
+      giftBtn.style.display = "none";
+
       window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     });
   </script>
+
 </body>
 </html>
+
