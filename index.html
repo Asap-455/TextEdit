@@ -52,7 +52,9 @@
       margin-top: 30px;
     }
 
-    video {
+    /* 🔥 VIDEO HIDDEN INITIALLY */
+    #loveVideo {
+      display: none;
       width: 300px;
       border-radius: 20px;
       margin-top: 20px;
@@ -124,21 +126,22 @@
       noBtn.style.top = y + "px";
     });
 
-    // YES click
+    // YES click → video show + play
     yesBtn.addEventListener("click", () => {
       yesBtn.style.display = "none";
       noBtn.style.display = "none";
+
       love.style.display = "block";
       giftBtn.style.display = "inline-block";
 
-      // force video play (important for browser)
+      video.style.display = "block";   // 🔥 SHOW VIDEO
       video.currentTime = 0;
       video.play();
 
       window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     });
 
-    // Gift button click → show photos
+    // Gift click → show photos
     giftBtn.addEventListener("click", () => {
       photos.style.display = "block";
       giftBtn.style.display = "none";
@@ -149,4 +152,3 @@
 
 </body>
 </html>
-
