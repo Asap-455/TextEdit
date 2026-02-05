@@ -5,34 +5,26 @@
 <title>Valentine 💖</title>
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  }
-
-  .wrapper {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    color: white;
   }
 
   .container {
+    min-height: 100vh;
     width: 100%;
     max-width: 900px;
+    margin: auto;
     text-align: center;
-    color: white;
-    padding: 80px 20px 120px;
-    position: relative;
+    padding: 100px 20px;
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.6rem;
     margin-bottom: 30px;
   }
 
@@ -56,30 +48,38 @@
     position: absolute;
   }
 
+  /* LOVE SECTION */
   #love {
     display: none;
-    margin-top: 40px;
+    margin-top: 80px;
   }
 
   video {
-    width: 320px;        /* ✅ video choti */
-    max-width: 100%;
+    width: 320px;
     border-radius: 16px;
     margin-top: 20px;
   }
 
-  .photos {
+  /* GIFTS */
+  #gifts {
     display: none;
-    margin-top: 120px;
+    margin-top: 100px;
   }
 
-  .photos h2 {
-    margin-bottom: 30px;
+  .gift-btn {
+    background: #fff;
+    color: #ff4d6d;
+    font-size: 18px;
+  }
+
+  /* PHOTOS */
+  .photos {
+    display: none;
+    margin-top: 60px;
   }
 
   .photos img {
     width: 200px;
-    max-width: 90%;
     border-radius: 20px;
     margin: 10px;
   }
@@ -88,59 +88,80 @@
 
 <body>
 
-<div class="wrapper">
-  <div class="container">
+<div class="container">
 
-    <h1>
-      Hey Bavneet 💖<br>
-      Will you be my Valentine?
-    </h1>
+  <!-- START TEXT -->
+  <h1 id="mainText">
+    Hey Bavneet 💖<br>
+    Will you be my Valentine?
+  </h1>
 
-    <button id="yes">Yes 😍</button>
-    <button id="no">No 🙈</button>
+  <button id="yes">Yes 😍</button>
+  <button id="no">No 🙈</button>
 
-    <div id="love">
-      <h2>Best decision ever ❤️<br>I love you 😘</h2>
-
-      <video id="loveVideo" autoplay loop muted playsinline>
-        <source src="meme.mp4" type="video/mp4">
-      </video>
-    </div>
-
-    <div class="photos" id="photos">
-      <h2>Our Memories 💕</h2>
-      <img src="image1.JPG">
-      <img src="image2.JPG">
-      <img src="image3.JPG">
-    </div>
-
+  <!-- VIDEO -->
+  <div id="love">
+    <h2>Best decision ever ❤️<br>I love you 😘</h2>
+    <video autoplay loop muted playsinline>
+      <source src="meme.mp4" type="video/mp4">
+    </video>
   </div>
+
+  <!-- GIFTS -->
+  <div id="gifts">
+    <h2>Choose your gift 🎁</h2>
+    <button class="gift-btn" onclick="openPhotos(1)">🎁 Gift 1</button>
+    <button class="gift-btn" onclick="openPhotos(2)">🎁 Gift 2</button>
+    <button class="gift-btn" onclick="openPhotos(3)">🎁 Gift 3</button>
+  </div>
+
+  <!-- PHOTOS -->
+  <div class="photos" id="photos1">
+    <img src="image1.JPG">
+  </div>
+
+  <div class="photos" id="photos2">
+    <img src="image2.JPG">
+  </div>
+
+  <div class="photos" id="photos3">
+    <img src="image3.JPG">
+  </div>
+
 </div>
 
 <script>
-  const noBtn = document.getElementById("no");
   const yesBtn = document.getElementById("yes");
+  const noBtn = document.getElementById("no");
   const love = document.getElementById("love");
-  const photos = document.getElementById("photos");
+  const gifts = document.getElementById("gifts");
 
   noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 120);
-    const y = Math.random() * (window.innerHeight - 120);
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+    noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
+    noBtn.style.top = Math.random() * (window.innerHeight - 120) + "px";
   });
 
   yesBtn.addEventListener("click", () => {
     yesBtn.style.display = "none";
     noBtn.style.display = "none";
-    love.style.display = "block";
-    photos.style.display = "block";
 
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: "smooth"
-    });
+    love.style.display = "block";
+
+    setTimeout(() => {
+      window.scrollTo({ top: love.offsetTop, behavior: "smooth" });
+    }, 300);
+
+    setTimeout(() => {
+      gifts.style.display = "block";
+      gifts.scrollIntoView({ behavior: "smooth" });
+    }, 1500);
   });
+
+  function openPhotos(num) {
+    document.getElementById("photos" + num).style.display = "block";
+    document.getElementById("photos" + num)
+      .scrollIntoView({ behavior: "smooth" });
+  }
 </script>
 
 </body>
