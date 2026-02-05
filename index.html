@@ -16,7 +16,6 @@
 
   .container {
     min-height: 100vh;
-    width: 100%;
     max-width: 900px;
     margin: auto;
     text-align: center;
@@ -48,7 +47,6 @@
     position: absolute;
   }
 
-  /* LOVE SECTION */
   #love {
     display: none;
     margin-top: 80px;
@@ -60,10 +58,13 @@
     margin-top: 20px;
   }
 
-  /* GIFTS */
   #gifts {
     display: none;
     margin-top: 100px;
+  }
+
+  .gift-box {
+    margin: 25px 0;
   }
 
   .gift-btn {
@@ -72,16 +73,11 @@
     font-size: 18px;
   }
 
-  /* PHOTOS */
-  .photos {
+  .gift-img {
     display: none;
-    margin-top: 60px;
-  }
-
-  .photos img {
-    width: 200px;
+    width: 220px;
     border-radius: 20px;
-    margin: 10px;
+    margin-top: 10px;
   }
 </style>
 </head>
@@ -90,8 +86,7 @@
 
 <div class="container">
 
-  <!-- START TEXT -->
-  <h1 id="mainText">
+  <h1>
     Hey Bavneet 💖<br>
     Will you be my Valentine?
   </h1>
@@ -109,23 +104,24 @@
 
   <!-- GIFTS -->
   <div id="gifts">
-    <h2>Choose your gift 🎁</h2>
-    <button class="gift-btn" onclick="openPhotos(1)">🎁 Gift 1</button>
-    <button class="gift-btn" onclick="openPhotos(2)">🎁 Gift 2</button>
-    <button class="gift-btn" onclick="openPhotos(3)">🎁 Gift 3</button>
-  </div>
 
-  <!-- PHOTOS -->
-  <div class="photos" id="photos1">
-    <img src="image1.JPG">
-  </div>
+    <h2>Special Gifts for You 🎁</h2>
 
-  <div class="photos" id="photos2">
-    <img src="image2.JPG">
-  </div>
+    <div class="gift-box">
+      <button class="gift-btn" onclick="openGift(1)">🎁 Gift 1</button>
+      <img src="image2.JPG" class="gift-img" id="img1">
+    </div>
 
-  <div class="photos" id="photos3">
-    <img src="image3.JPG">
+    <div class="gift-box">
+      <button class="gift-btn" onclick="openGift(2)">🎁 Gift 2</button>
+      <img src="image1.JPG" class="gift-img" id="img2">
+    </div>
+
+    <div class="gift-box">
+      <button class="gift-btn" onclick="openGift(3)">🎁 Gift 3</button>
+      <img src="image3.JPG" class="gift-img" id="img3">
+    </div>
+
   </div>
 
 </div>
@@ -148,7 +144,7 @@
     love.style.display = "block";
 
     setTimeout(() => {
-      window.scrollTo({ top: love.offsetTop, behavior: "smooth" });
+      love.scrollIntoView({ behavior: "smooth" });
     }, 300);
 
     setTimeout(() => {
@@ -157,10 +153,9 @@
     }, 1500);
   });
 
-  function openPhotos(num) {
-    document.getElementById("photos" + num).style.display = "block";
-    document.getElementById("photos" + num)
-      .scrollIntoView({ behavior: "smooth" });
+  function openGift(num) {
+    event.target.style.display = "none";
+    document.getElementById("img" + num).style.display = "block";
   }
 </script>
 
