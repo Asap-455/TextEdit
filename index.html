@@ -18,7 +18,7 @@
     min-height: 100vh;
     max-width: 900px;
     margin: auto;
-    text-align: center;              /* 🔥 text center */
+    text-align: center;
     padding: 100px 20px;
   }
 
@@ -47,7 +47,6 @@
     position: absolute;
   }
 
-  /* VIDEO */
   #love {
     display: none;
     margin-top: 80px;
@@ -59,22 +58,13 @@
     margin-top: 20px;
   }
 
-  /* GIFTS */
   #gifts {
     display: none;
     margin-top: 100px;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
   }
 
   .gift-box {
-    width: 220px;
-    min-height: 260px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 25px 0;
   }
 
   .gift-btn {
@@ -87,6 +77,7 @@
     display: none;
     width: 220px;
     border-radius: 20px;
+    margin-top: 10px;
   }
 </style>
 </head>
@@ -113,6 +104,8 @@
 
   <!-- GIFTS -->
   <div id="gifts">
+
+    <h2>Special Gifts for You 🎁</h2>
 
     <div class="gift-box">
       <button class="gift-btn" onclick="openGift(1)">🎁 Gift 1</button>
@@ -149,12 +142,15 @@
     noBtn.style.display = "none";
 
     love.style.display = "block";
-    love.scrollIntoView({ behavior: "smooth" });
 
     setTimeout(() => {
-      gifts.style.display = "flex";
+      love.scrollIntoView({ behavior: "smooth" });
+    }, 300);
+
+    setTimeout(() => {
+      gifts.style.display = "block";
       gifts.scrollIntoView({ behavior: "smooth" });
-    }, 1200);
+    }, 1500);
   });
 
   function openGift(num) {
