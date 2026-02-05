@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Valentine 💖</title>
-
   <style>
     body {
       margin: 0;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       display: flex;
       justify-content: center;
@@ -19,7 +18,6 @@
     .container {
       text-align: center;
       color: white;
-      padding: 20px;
     }
 
     h1 {
@@ -52,24 +50,15 @@
       margin-top: 30px;
     }
 
-    /* 🔥 VIDEO HIDDEN INITIALLY */
-    #loveVideo {
-      display: none;
+    video {
       width: 300px;
       border-radius: 20px;
       margin-top: 20px;
     }
 
-    #giftBtn {
-      display: none;
-      background: #ffb703;
-      color: #fff;
-      margin-top: 25px;
-    }
-
     .photos {
+      margin-top: 80px;
       display: none;
-      margin-top: 40px;
     }
 
     .photos img {
@@ -82,73 +71,51 @@
 
 <body>
   <div class="container">
-
     <h1>Hey Bavneet 💖<br>Will you be my Valentine?</h1>
 
     <button id="yes">Yes 😍</button>
     <button id="no">No 🙈</button>
 
-    <!-- Love Section -->
     <div id="love">
       <h2>Best decision ever ❤️<br>I love you 😘</h2>
 
-      <video id="loveVideo" loop muted playsinline>
+      <!-- Meme / cute video -->
+      <video autoplay loop muted>
         <source src="meme.mp4" type="video/mp4">
       </video>
-
-      <br>
-      <button id="giftBtn">Nice Gift 🎁</button>
     </div>
 
-    <!-- Photos -->
+    <!-- Photos section -->
     <div class="photos" id="photos">
       <h2>Our Memories 💕</h2>
-      <img src="image2.JPG">
-      <img src="image1.JPG">
-      <img src="image3.JPG">
+      <img src="photo1.jpg">
+      <img src="photo2.jpg">
+      <img src="photo3.jpg">
     </div>
-
   </div>
 
   <script>
     const noBtn = document.getElementById("no");
     const yesBtn = document.getElementById("yes");
     const love = document.getElementById("love");
-    const video = document.getElementById("loveVideo");
-    const giftBtn = document.getElementById("giftBtn");
     const photos = document.getElementById("photos");
 
     // NO button bhagta rahe
     noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * (window.innerWidth - 120);
-      const y = Math.random() * (window.innerHeight - 120);
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
     });
 
-    // YES click → video show + play
+    // YES click
     yesBtn.addEventListener("click", () => {
       yesBtn.style.display = "none";
       noBtn.style.display = "none";
-
       love.style.display = "block";
-      giftBtn.style.display = "inline-block";
-
-      video.style.display = "block";   // 🔥 SHOW VIDEO
-      video.currentTime = 0;
-      video.play();
-
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-    });
-
-    // Gift click → show photos
-    giftBtn.addEventListener("click", () => {
       photos.style.display = "block";
-      giftBtn.style.display = "none";
-
       window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     });
   </script>
-
 </body>
 </html>
