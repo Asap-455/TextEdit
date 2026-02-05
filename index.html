@@ -156,10 +156,25 @@
   const love = document.getElementById("love");
   const gifts = document.getElementById("gifts");
 
+  let yesRun = true;
+
   noBtn.addEventListener("mouseover", () => {
     noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
     noBtn.style.top = Math.random() * (window.innerHeight - 120) + "px";
   });
+ 
+  yesBtn.addEventListener("mouseover", () => {
+    if (!yesRun) return;
+
+    yesBtn.style.position = "absolute";
+    yesBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
+    yesBtn.style.top = Math.random() * (window.innerHeight - 120) + "px";
+  });
+ 
+  setTimeout(() => {
+    yesRun = false;
+    yesBtn.style.position = "static";
+  }, 120000); // 2 minutes
 
   yesBtn.addEventListener("click", () => {
     yesBtn.style.display = "none";
