@@ -58,13 +58,24 @@
     margin-top: 20px;
   }
 
+  /* GIFTS SECTION */
   #gifts {
     display: none;
     margin-top: 100px;
   }
 
+  .gifts-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: nowrap;
+  }
+
   .gift-box {
-    margin: 25px 0;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .gift-btn {
@@ -76,8 +87,9 @@
   .gift-img {
     display: none;
     width: 220px;
+    height: auto;
     border-radius: 20px;
-    margin-top: 10px;
+    margin-top: 12px;
   }
 </style>
 </head>
@@ -102,30 +114,31 @@
     </video>
   </div>
 
- 
-<div id="gifts">
-  <h2>Special Gifts for You 🎁</h2>
+  <!-- GIFTS -->
+  <div id="gifts">
+    <h2>Special Gifts for You 🎁</h2>
 
-  <div class="gifts-row">
+    <div class="gifts-row">
 
-    <div class="gift-box">
-      <button class="gift-btn" onclick="openGift(1)">🎁 Gift 1</button>
-      <img src="image2.JPG" class="gift-img" id="img1">
+      <div class="gift-box">
+        <button class="gift-btn" onclick="openGift(1, this)">🎁 Gift 1</button>
+        <img src="image2.JPG" class="gift-img" id="img1">
+      </div>
+
+      <div class="gift-box">
+        <button class="gift-btn" onclick="openGift(2, this)">🎁 Gift 2</button>
+        <img src="image1.JPG" class="gift-img" id="img2">
+      </div>
+
+      <div class="gift-box">
+        <button class="gift-btn" onclick="openGift(3, this)">🎁 Gift 3</button>
+        <img src="image3.JPG" class="gift-img" id="img3">
+      </div>
+
     </div>
-
-    <div class="gift-box">
-      <button class="gift-btn" onclick="openGift(2)">🎁 Gift 2</button>
-      <img src="image1.JPG" class="gift-img" id="img2">
-    </div>
-
-    <div class="gift-box">
-      <button class="gift-btn" onclick="openGift(3)">🎁 Gift 3</button>
-      <img src="image3.JPG" class="gift-img" id="img3">
-    </div>
-
   </div>
-</div>
 
+</div>
 
 <script>
   const yesBtn = document.getElementById("yes");
@@ -154,8 +167,8 @@
     }, 1500);
   });
 
-  function openGift(num) {
-    event.target.style.display = "none";
+  function openGift(num, btn) {
+    btn.style.display = "none";
     document.getElementById("img" + num).style.display = "block";
   }
 </script>
